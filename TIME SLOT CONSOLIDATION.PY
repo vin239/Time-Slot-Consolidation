@@ -3,19 +3,18 @@ n = int(input())
 arr = []
 
 for i in range(n):
-    start, end = map(int, input().split())
-    arr.append([start, end])
+    a, b = map(int, input().split())
+    arr.append([a, b])
 
 arr.sort()
 
-result = []
+ans = []
 
-for start, end in arr:
-    if len(result) == 0 or start > result[-1][1]:
-        result.append([start, end])
+for a, b in arr:
+    if not ans or a > ans[-1][1]:
+        ans.append([a, b])
     else:
-        if end > result[-1][1]:
-            result[-1][1] = end
+        ans[-1][1] = max(ans[-1][1], b)
 
-for start, end in result:
-    print(start, end)
+for a, b in ans:
+    print(a, b)
